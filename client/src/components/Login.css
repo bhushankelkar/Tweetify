@@ -1,3 +1,7 @@
+.containerbox{
+    background: url('../images/login3.png') center center/cover no-repeat; 
+    
+}
 
 
 .form__box{
@@ -11,7 +15,8 @@
 {   box-sizing: border-box;
     padding:3%;
     display:inline-block;
-    background: grey;
+    background:rgb(25,32,37);
+    color:#fff;
     border-radius: 2%;
     margin:5%;
 

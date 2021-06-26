@@ -122,3 +122,12 @@ class Signup(APIView):
         user = User.objects.latest('uid')
         # print(user.uid)
         return JsonResponse(user.uid,safe=False)
+
+class Delete(APIView):
+    def get(self, request, format=None):
+        
+        verify_uid=int(request.GET['id'])
+        name = request.GET['name']
+       
+        Product.objects.filter(uid=verify_uid).filter(name=name).delete()
+        return JsonResponse("success",safe=False)

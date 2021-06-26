@@ -59,7 +59,7 @@ render (){
                             <Col xs={4} sm={3} lg={4} >      
                               
                                                       <Card
-                                      bg="dark"
+                                      bg="success"
                                       
                                       text="light"
                                       style={{ width: '18rem',marginTop:'1rem' }}
@@ -67,10 +67,9 @@ render (){
                                     >
                                       
                                       <Card.Body>
-                                        <Card.Title>{this.state._count.positive}</Card.Title>
+                                        <h1>{this.state._count.positive}</h1>
                                         <Card.Text>
-                                          Some quick example text to build on the card title and make up the bulk
-                                          of the card's content.
+                                          Positive Tweets
                                         </Card.Text>
                                       </Card.Body>
                                     </Card>
@@ -78,7 +77,7 @@ render (){
                             <Col xs={4} sm={3} lg={4} >      
                               
                                                       <Card
-                                      bg="dark"
+                                      bg="primary"
                                       
                                       text="light"
                                       style={{ width: '18rem',marginTop:'1rem' }}
@@ -86,10 +85,9 @@ render (){
                                     >
                                       
                                       <Card.Body>
-                                        <Card.Title> </Card.Title>
+                                      <h1>{this.state._count.neutral}</h1>
                                         <Card.Text>
-                                          Some quick example text to build on the card title and make up the bulk
-                                          of the card's content.
+                                          Neutral Tweets
                                         </Card.Text>
                                       </Card.Body>
                                     </Card>
@@ -97,7 +95,7 @@ render (){
                             <Col xs={4} sm={3} lg={4} >      
                               
                                                       <Card
-                                      bg="dark"
+                                      bg="danger"
                                       
                                       text="light"
                                       style={{ width: '18rem',marginTop:'1rem' }}
@@ -105,10 +103,9 @@ render (){
                                     >
                                       
                                       <Card.Body>
-                                        <Card.Title>{this.state._count.negative}</Card.Title>
+                                      <h1>{this.state._count.negative}</h1>
                                         <Card.Text>
-                                          Some quick example text to build on the card title and make up the bulk
-                                          of the card's content.
+                                          Negative Tweets
                                         </Card.Text>
                                       </Card.Body>
                                     </Card>
@@ -120,7 +117,7 @@ render (){
         <Bars hashtag={this.state._count.hashtag}></Bars>
                            
         </Col>
-        <Col xs={12} sm={12} lg={6} style={{height:'400px'}}>Worcloud
+        <Col xs={12} sm={12} lg={6} style={{height:'430px',margin:'auto','overflow':'hidden'}}>Worcloud
         <PosCloud freq={this.state._count.freq_array}></PosCloud>
         </Col>
         </Row>

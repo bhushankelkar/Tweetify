@@ -8,6 +8,7 @@ export default class ClientSideBar extends Component{
   super(props)
   
   this.state={
+    checked: false,
     data:"india",
     loading:true,
     counts:{  'positive':10,
@@ -28,16 +29,24 @@ export default class ClientSideBar extends Component{
   
   } 
   this.onTrigger=this.onTrigger.bind(this)
-  this.handleInputChange = this.handleInputChange.bind(this);
-
+  
 }
 async onTrigger(event) {
-  
-    
+    var checkb = document.getElementById("check");
+    var chks = checkb.getElementsByTagName("INPUT");
+    var selected = new Array();
+  // Loop and push the checked CheckBox value in Array.
+   for (var i = 0; i < chks.length; i++) {
+      if (chks[i].checked) {
+          selected.push(chks[i].value);
+      }
+    }
+    console.log("Selected",selected);
     this.setState({loading:true})
     event.preventDefault();
-    this.state.data = window.location.search.split('name=')[1] +" " + this.state.data  
-    console.log("battery",this.state.data)    
+    var keywords = selected.join(' ')
+    this.state.data=window.location.search.split('name=')[1] + " " +keywords
+      
     await axios.get('http://localhost:8000/predict/',{params:{text:this.state.data}}).then((response) => {
     this.setState({counts:response.data})
     console.log("counts",this.state.counts)    
@@ -48,18 +57,29 @@ async onTrigger(event) {
     }).catch(function (error) {
         console.log(error);
     });
+    
     this.setState({loading:false})
-
+    this.setState({data : window.location.search.split('name=')[1]})
 
 }
 
 handleInputChange(event) {
+ 
   const target = event.target;
   console.log("form value",target.value) 
-   if(this.state.data === "india")
-    this.state.data =  target.value
-    else 
-    this.state.data = this.state.data + " " + target.value
+    if(this.state.data === "india")
+    this.state.data = target.value
+    else if(target.checked)
+    this.state.data =this.state.data + " " +target.value
+}
+
+toggleCheckbox = event => {
+  const target = event.target;
+  console.log("form value",target.value) 
+    if(this.state.data === "india")
+    this.state.data = target.value
+    else if(target.checked)
+    this.state.data =this.state.data + " " +target.value
 }
 
 componentDidMount(){
@@ -91,18 +111,22 @@ componentDidMount(){
 
   
   
-   <div className="forms-check">
+   <div className="forms-check" id="check">
    
-    <Form.Check type="checkbox" label="Battery" value="battery" onChange={this.handleInputChange} />
-    <Form.Check type="checkbox" label="Screen" value="screen" onChange={this.handleInputChange}/>
-    <Form.Check type="checkbox" label="Memory" value="memory" onChange={this.handleInputChange}/>
-    <Form.Check type="checkbox" label="Heat" value="heat" onChange={this.handleInputChange}/>
-    <Form.Check type="checkbox" label="Cost" value="cost" onChange={this.handleInputChange}/>
+    <input type="checkbox" id="bat" label="Battery" value="battery"   />
+    <label for="Battery"> Battery</label><br></br>
+    <input type="checkbox" id="sc" label="Screen" value="screen"  />
+    <label for="Screen"> Screen</label><br></br>
+    <input type="checkbox"id="mem" label="Memory" value="memory"  />
+    <label for="Memory"> Memory</label><br></br>
+    <input type="checkbox"id="heat" label="Heat" value="heat"  />
+    <label for="Heat"> Heat</label><br></br>
+    <input type="checkbox" id="cos" label="Cost" value="cost"  />
+    <label for="Cost"> Cost</label><br></br>
     </div>
   </Form.Group>
   <hr class='hrr'/>
- 
-
+  
   <div className="forms-check">
  {this.state.loading ?<Spinner animation="border" role="status">
   <span className="sr-only">Loading...</span>

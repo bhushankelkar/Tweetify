@@ -16,12 +16,13 @@ from .ML_product import get_line_chart_daily
 class Tweet_List(APIView):
     def get(self, request, format=None):
         print("Requested data",request.GET['text'])
+        
         label,tweet_array=pred(request.GET['text'])
         merged=hashtag(tweet_array,label)
         tweet_array=tweet_array[0:10]
         freq_array=frequent(tweet_array[0:100])
         pos,neg,neu=count(label)
-        print(get_line_chart_daily())
+        #print(get_line_chart_daily())
         # print("fuuuulllllllllllllllllllllllllllllo")
         
         counts={'positive':pos,'negative':neg,'neutral':neu,'tweets':tweet_array,'freq_array':freq_array,'hashtag':merged}
