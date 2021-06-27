@@ -9,7 +9,7 @@ export default class ClientSideBar extends Component{
   
   this.state={
     checked: false,
-    data:"india",
+    data:"india mobile",
     loading:true,
     counts:{  'positive':10,
     'negative':10,
@@ -47,7 +47,7 @@ async onTrigger(event) {
     var keywords = selected.join(' ')
     this.state.data=window.location.search.split('name=')[1] + " " +keywords
       
-    await axios.get('http://localhost:8000/predict/',{params:{text:this.state.data}}).then((response) => {
+    await axios.get('http://localhost:8000/predictclient/',{params:{text:this.state.data}}).then((response) => {
     this.setState({counts:response.data})
     console.log("counts",this.state.counts)    
     this.props.parentCallback(this.state.counts);
@@ -63,29 +63,12 @@ async onTrigger(event) {
 
 }
 
-handleInputChange(event) {
- 
-  const target = event.target;
-  console.log("form value",target.value) 
-    if(this.state.data === "india")
-    this.state.data = target.value
-    else if(target.checked)
-    this.state.data =this.state.data + " " +target.value
-}
 
-toggleCheckbox = event => {
-  const target = event.target;
-  console.log("form value",target.value) 
-    if(this.state.data === "india")
-    this.state.data = target.value
-    else if(target.checked)
-    this.state.data =this.state.data + " " +target.value
-}
 
 componentDidMount(){
   
   this.setState({loading:true})
-  axios.get('http://localhost:8000/predict/',{params:{text:this.state.data}}).then((response) => {
+  axios.get('http://localhost:8000/predictclient/',{params:{text:this.state.data}}).then((response) => {
   this.setState({counts:response.data})
   // console.log(this.state.counts.hashtag);
   this.props.parentCallback(this.state.counts);
@@ -134,7 +117,7 @@ componentDidMount(){
   <div>
   <Button
   className="formbutton" variant="primary"  type = "submit" value = "Submit">Search</Button>
-  <Button  className="formbutton" variant="primary" >Detailed report</Button>
+  
   </div>
   } 
 </div>

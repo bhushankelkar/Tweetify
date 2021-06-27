@@ -23,6 +23,12 @@ view(e,name){
   window.location.href="http://localhost:3000/mainpage?name="+name
 }
 
+viewc(e,name){
+  e.preventDefault()
+  
+  window.location.href="http://localhost:3000/compare?name="+name
+}
+
 delete(e,name){
   e.preventDefault()
   console.log("Name in delete",name)
@@ -44,7 +50,8 @@ componentDidMount(){
 }
 renderFullnames() { return this.state.data.map((name) => { return (<tr><td>{name}</td> <td><Button variant = "success" onClick={(e) => {
   this.view(e,name);}}>View</Button>  
-<Button variant="primary">Compare</Button>
+<Button variant="primary" onClick={(e) => {
+  this.viewc(e,name);}}>Compare</Button>
 <Button variant="danger" onClick={(e) => {
   this.delete(e,name);}} >Delete</Button>
           </td></tr>); 

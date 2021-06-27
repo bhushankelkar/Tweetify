@@ -16,16 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from prediction import views
+from prediction import viewsclient
 from prediction import getprediction
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('predict/$', views.Tweet_List.as_view()),
     # path('predict/client/', viewsclient.Tweet_List.as_view(), name = 'api_predict'),
     path('predict/', views.Tweet_List.as_view(), name = 'api_predict'),
+    path('predictclient/', viewsclient.Tweet_List.as_view(), name = 'api_predict'),
     path('demo/', getprediction.Tweet_Label.as_view(), name = 'api_predict'),
-    path('login/', views.Login.as_view()),
-    path('login/$', views.Login.as_view()),
-    path('added/', views.Added.as_view()),
-    path('signup/', views.Signup.as_view()),
-    path('delete/', views.Delete.as_view())
+    path('login/', viewsclient.Login.as_view()),
+    path('login/$', viewsclient.Login.as_view()),
+    path('added/', viewsclient.Added.as_view()),
+    path('signup/', viewsclient.Signup.as_view()),
+    path('delete/', viewsclient.Delete.as_view())
 ]

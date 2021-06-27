@@ -1,15 +1,12 @@
 // import './App.css';
 import ClientSideBar from '../ClientSidebar'
-import Dough from '../doughnut'
 import Bars from '../stackedbar'
-import TweetsCard from '../tweets_card'
 import PosCloud from '../pos_cloud' 
-import ReactSpeedometer from '../gaugechart'
 import Line from '../line'
 // import NeuCloud from '../neu_cloud'
 // import NegCloud from '../neg_cloud'
 import '../ClientSidebar.css'
-import { Container,Row,Col,Button,Card } from 'react-bootstrap';
+import { Container,Row,Col,Card } from 'react-bootstrap';
 import React, { Component} from 'react';
 import KeyDough from '../keyworddoughnut'
 
@@ -132,7 +129,7 @@ render (){
         
         <Row>
           
-          {  Object.entries(this.state._count.keyword).map(([key,value],i) =>
+        {  Object.entries(this.state._count.keyword).map(([key,value],i) =>
             <Col  xs={4} sm={3} lg={5} style={{ height: '250px',width:'700px',margin:'10px'}}>{key}
             <KeyDough key= {key} value={value}></KeyDough>
           </Col> 

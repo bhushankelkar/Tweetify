@@ -1,17 +1,12 @@
 // import './App.css';
-import ClientSideBar from '../ClientSidebar'
-import Dough from '../doughnut'
+import CompareSidebar from '../CompareSidebar'
 import Bars from '../stackedbar'
-import TweetsCard from '../tweets_card'
-import PosCloud from '../pos_cloud' 
-import ReactSpeedometer from '../gaugechart'
 import Line from '../line'
 // import NeuCloud from '../neu_cloud'
 // import NegCloud from '../neg_cloud'
 import '../ClientSidebar.css'
-import { Container,Row,Col,Button,Card } from 'react-bootstrap';
+import { Container,Row,Col } from 'react-bootstrap';
 import React, { Component} from 'react';
-import KeyDough from '../keyworddoughnut'
 import CompareDough from '../comparedoughnut'
 
 export default class ClientComparison extends Component{
@@ -62,7 +57,7 @@ render (){
   
 <Row>
                   <Col xs={4} sm={4} lg={2} id="sidebar-wrapper" >      
-                      <ClientSideBar parentCallback = {this.handleCallback} />
+                      <CompareSidebar parentCallback = {this.handleCallback} />
                       
                     </Col>
                     <Col xs={8} sm={8} lg={10}>
