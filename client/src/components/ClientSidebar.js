@@ -47,7 +47,7 @@ async onTrigger(event) {
     var keywords = selected.join(' ')
     this.state.data=window.location.search.split('name=')[1] + " " +keywords
       
-    await axios.get('http://localhost:8000/predictclient/',{params:{text:this.state.data}}).then((response) => {
+    await axios.get('http://localhost:8000/predictview/',{params:{text:this.state.data}}).then((response) => {
     this.setState({counts:response.data})
     console.log("counts",this.state.counts)    
     this.props.parentCallback(this.state.counts);
@@ -68,7 +68,7 @@ async onTrigger(event) {
 componentDidMount(){
   
   this.setState({loading:true})
-  axios.get('http://localhost:8000/predictclient/',{params:{text:this.state.data}}).then((response) => {
+  axios.get('http://localhost:8000/predictview/',{params:{text:this.state.data}}).then((response) => {
   this.setState({counts:response.data})
   // console.log(this.state.counts.hashtag);
   this.props.parentCallback(this.state.counts);

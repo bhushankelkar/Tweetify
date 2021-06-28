@@ -61,7 +61,7 @@ async onTrigger(event) {
   this.state.data=window.location.search.split('name=')[1] + " " +keywords
    var entered_pro = this.state.pro2_name + " " +keywords
     console.log("Entered pro",entered_pro)
-    await axios.get('http://localhost:8000/predictclient/',{params:{text:this.state.data,text1:entered_pro,days:this.state.days}}).then((response) => {
+    await axios.get('http://localhost:8000/predictcompare/',{params:{text:this.state.data,text1:entered_pro,days:this.state.days}}).then((response) => {
     this.setState({counts:response.data})
     console.log("counts",this.state.counts)    
     this.props.parentCallback(this.state.counts);
@@ -97,7 +97,7 @@ productsub(e){
 componentDidMount(){
   
   this.setState({loading:true})
-  axios.get('http://localhost:8000/predictclient/',{params:{text:this.state.data,text1:this.state.pro2_name,days:this.state.days}}).then((response) => {
+  axios.get('http://localhost:8000/predictcompare/',{params:{text:this.state.data,text1:this.state.pro2_name,days:this.state.days}}).then((response) => {
   this.setState({counts:response.data})
   // console.log(this.state.counts.hashtag);
   this.props.parentCallback(this.state.counts);

@@ -15,7 +15,31 @@ from .ML_product import get_frequent_hashtags as hashtag
 from .ML_product import get_line_chart_daily,get_keyword_chart,get_company_sentiment,get_company_line_chart,get_company_keyword
 # Create your views here.
 # Class based view to predict based on IRIS model
-class Tweet_List(APIView):
+class Tweet_List_View(APIView):
+    def get(self, request, format=None):
+        keywords = request.GET['text'].split(' ')
+        pro_name = keywords[0]
+        print("Pro name",pro_name)
+        keywords = keywords[1:]
+        print("Requested data",request.GET['text'])
+        label,tweet_array=pred(request.GET['text'])
+        merged=hashtag(tweet_array,label)
+        tweet_array=tweet_array[0:10]
+        freq_array=frequent(tweet_array[0:100])
+        pos,neg,neu=count(label)
+        line_daily = (get_line_chart_daily(pro_name))
+        
+        keyword = get_keyword_chart(request.GET['text'],keywords)
+        counts={
+            'positive':pos,'negative':neg,'neutral':neu,'tweets':tweet_array,
+            'freq_array':freq_array,'hashtag':merged,
+            'line_daily':line_daily,'keyword':keyword,
+            
+            
+            }
+        return Response(counts, status=status.HTTP_201_CREATED)
+      
+class Tweet_List_Compare(APIView):
     def get(self, request, format=None):
         keywords = request.GET['text'].split(' ')
         pro_name = keywords[0]
@@ -54,9 +78,8 @@ class Tweet_List(APIView):
             
             
             }
-        return Response(counts, status=status.HTTP_201_CREATED)
-      
-   
+        return Response(counts, status=status.HTTP_201_CREATED)  
+
 class Delete(APIView):
     def get(self, request, format=None):
         
