@@ -19,9 +19,9 @@ class Tweet_List_View(APIView):
     def get(self, request, format=None):
         keywords = request.GET['text'].split(' ')
         pro_name = keywords[0]
-        print("Pro name",pro_name)
+        #print("Pro name",pro_name)
         keywords = keywords[1:]
-        print("Requested data",request.GET['text'])
+        #print("Requested data",request.GET['text'])
         label,tweet_array=pred(request.GET['text'])
         merged=hashtag(tweet_array,label)
         tweet_array=tweet_array[0:10]
@@ -43,32 +43,29 @@ class Tweet_List_Compare(APIView):
     def get(self, request, format=None):
         keywords = request.GET['text'].split(' ')
         pro_name = keywords[0]
-        print("Pro name",pro_name)
+        #print("Pro name",pro_name)
         keywords = keywords[1:]
-        print("Requested data",request.GET['text'])
-        label,tweet_array=pred(request.GET['text'])
-        merged=hashtag(tweet_array,label)
-        tweet_array=tweet_array[0:10]
-        freq_array=frequent(tweet_array[0:100])
-        pos,neg,neu=count(label)
-        line_daily = (get_line_chart_daily(pro_name))
+        #print("Requested data",request.GET['text'])
+        #label,tweet_array=pred(request.GET['text'])
+        #merged=hashtag(tweet_array,label)
+        #tweet_array=tweet_array[0:10]
+        #freq_array=frequent(tweet_array[0:100])
+        #pos,neg,neu=count(label)
+        #line_daily = (get_line_chart_daily(pro_name))
         
-        keyword = get_keyword_chart(request.GET['text'],keywords)
+        #keyword = get_keyword_chart(request.GET['text'],keywords)
         tweet_search = request.GET['text1']
         pro2_namet = request.GET['text1'].split(' ')
         pro2_name = pro2_namet[0]
         company1_sentiment,company2_sentiment = get_company_sentiment(request.GET['text'],tweet_search,keywords)
         days = int(float(request.GET['days']))
         line1,line2 = get_company_line_chart(days,pro_name,pro2_name)
-        print("Line 1",line1)
-        print("Line 2",line2)
-        #line2 = get_company2_line_chart()
+        
         c1 = get_company_keyword(request.GET['text'],keywords)
         c2 = get_company_keyword(tweet_search,keywords)
         counts={
-            'positive':pos,'negative':neg,'neutral':neu,'tweets':tweet_array,
-            'freq_array':freq_array,'hashtag':merged,
-            'line_daily':line_daily,'keyword':keyword,
+            
+            
             'company1_sentiment':company1_sentiment,
             'company2_sentiment':company2_sentiment,
             'company1_line':line1,
@@ -100,7 +97,7 @@ class Login(APIView):
         if verify.password == getpassword:
             
             # print("here1 ",products)
-            print("verified",verify.uid)
+            #print("verified",verify.uid)
             product = Product.objects.filter(uid=verify.uid)
             products=[]
             for i in product:
@@ -113,13 +110,11 @@ class Login(APIView):
 
 
 
-    # def get(self,request,format=None):
-    #     tweet = Tweets.objects.all()
-    #     tweet = TweetSerializer(tweet,many=True) 
         
         return JsonResponse(verify.uid,safe=False) 
+    
     def get(self, request, format=None):
-            print("Requested data",request.GET['id'])
+            #print("Requested data",request.GET['id'])
             verify_uid=int(request.GET['id'])
             product = Product.objects.filter(uid=verify_uid)
             products=[]

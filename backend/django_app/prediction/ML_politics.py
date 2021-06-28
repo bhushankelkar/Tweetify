@@ -12,7 +12,7 @@ def pred(keyword):
 
     message=preprocess(raw_message)
     hashtags = extract_hashtag(raw_message)
-    print(hashtags)
+    #print(hashtags)
     # seq=[one_hot(words,voc_size)for words in new_complaint] 
     # print(message)
     seq = PredictionConfig.tokenizer.texts_to_sequences(message)

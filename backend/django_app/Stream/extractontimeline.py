@@ -20,7 +20,7 @@ def extract(keyword = 'OnePlus', from_days = 0, fraction = 5, verbose = False):
 
     assert keyword is not None,"Empty Keyword Supplied"
     assert from_days <= 7,"Tweepy constraint: can't allow more than 7 days!"
-    print(keyword)
+    #print(keyword)
     tweets = []                 #[created_at, tweet]
     while from_days >= 0:
         #Example: 
@@ -34,5 +34,5 @@ def extract(keyword = 'OnePlus', from_days = 0, fraction = 5, verbose = False):
             tweets.append([tweet.created_at.strftime('%Y-%m-%d'), tweet.text])
         from_days -= 1
     df = pd.DataFrame(tweets, columns = ['Date', 'Tweets'])
-    
+    print(keyword,df)
     return df

@@ -35,7 +35,7 @@ def get_frequent_hashtags(tweet,label):
 
     # creating a list
     # lst = [['Happy', 'For', 'Geeks'],[],['Happy'],['Sad','Cute'],[],['Happy','For']]
-    print(lst)
+    #print(lst)
     for i in range(len(lst)):
         for j in range(len(lst[i])):
             key = lst[i][j]
@@ -118,7 +118,7 @@ def get_line_chart_daily(pro_name):
     for i in preds:
         a.append(labels[np.argmax(i)])
     df['labels'] = a
-    print("After labels",df)
+    #print("After labels",df)
     
     df=df.sort_values(by=['Date'],ascending=True)
     
@@ -128,7 +128,7 @@ def get_line_chart_daily(pro_name):
     df['Date']=df['Date'].astype(str)
     line_daily= (df.set_index('Date').T.to_dict('list'))
     
-    print("Line daily",line_daily)
+    #print("Line daily",line_daily)
     
     return line_daily
 
@@ -176,6 +176,15 @@ def get_company_sentiment(pro1,pro2,keywords):
 #     myDict['sentiment'] = [pos,neg,neu]
 #     return myDict
 
+def checkPresence(df):
+    if 'labels_0' not in df.columns:
+        df['labels_0']=0
+    if 'labels_1' not in df.columns: 
+        df['labels_1']=0
+    if 'labels_-1' not in df.columns: 
+        df['labels_-1']=0
+    return df
+
 def get_company_line_chart(days,pro1,pro2):
     # df=pd.read_csv('C:\\Users\\Bhushan\\OneDrive\\Documents\\Tweetify-1-master\\backend\\django_app\\prediction\\company1.csv')
     # print(df.head())
@@ -187,43 +196,40 @@ def get_company_line_chart(days,pro1,pro2):
     # return line_c1
     import pandas as pd
     import dateutil
-    days = int(days)
-    type(days)
-    print("Days",days)
-    df = extract(pro1,days,5,False)
+    df1 = extract(pro1,days-1,5,False)
     
-    df['Tweets']=preprocess(df['Tweets'])
-    seq = PredictionConfig.tokenizer.texts_to_sequences(df['Tweets'])
+    df1['Tweets']=preprocess(df1['Tweets'])
+    seq = PredictionConfig.tokenizer.texts_to_sequences(df1['Tweets'])
     padded = pad_sequences(seq, maxlen=150)
     preds = PredictionConfig.loaded_model.predict(padded)
     labels = [0,1,-1]
     a=[]
     for i in preds:
         a.append(labels[np.argmax(i)])
-    df['labels'] = a
-    print("After labels",df)
+    df1['labels'] = a
+     
+    df1=df1.sort_values(by=['Date'],ascending=True)
     
-    df=df.sort_values(by=['Date'],ascending=True)
-    
-
-    df= (pd.get_dummies(df,columns=["labels"]))
-    df= df.groupby(['Date'],as_index=False).sum()
-    df['Date']=df['Date'].astype(str)
-    line_daily1= (df.set_index('Date').T.to_dict('list'))
-    
-    print("Line daily",line_daily1)
    
-    df2 = extract(pro2,days,5,False)
+    df1= (pd.get_dummies(df1,columns=["labels"]))
+    df1= df1.groupby(['Date'],as_index=False).sum()
+    df1['Date']=df1['Date'].astype(str)
+    df1=checkPresence(df1)
+    line_daily1= (df1.set_index('Date').T.to_dict('list'))
+    
+    print("Dataframe 1",df1)
+   
+    df2 = extract(pro2,days-1,5,False)
     
     df2['Tweets']=preprocess(df2['Tweets'])
-    seq = PredictionConfig.tokenizer.texts_to_sequences(df2['Tweets'])
-    padded = pad_sequences(seq, maxlen=150)
-    preds = PredictionConfig.loaded_model.predict(padded)
-    labels = [0,1,-1]
-    a=[]
-    for i in preds:
-        a.append(labels[np.argmax(i)])
-    df2['labels'] = a
+    seq1 = PredictionConfig.tokenizer.texts_to_sequences(df2['Tweets'])
+    padded1 = pad_sequences(seq1, maxlen=150)
+    preds1 = PredictionConfig.loaded_model.predict(padded1)
+    labels1 = [0,1,-1]
+    a1=[]
+    for i in preds1:
+        a1.append(labels1[np.argmax(i)])
+    df2['labels'] = a1
    
     
     df2=df2.sort_values(by=['Date'],ascending=True)
@@ -232,19 +238,13 @@ def get_company_line_chart(days,pro1,pro2):
     df2= (pd.get_dummies(df2,columns=["labels"]))
     df2= df2.groupby(['Date'],as_index=False).sum()
     df2['Date']=df2['Date'].astype(str)
+    df2=checkPresence(df2)
     line_daily2= (df2.set_index('Date').T.to_dict('list'))
-    
-    print("Line daily",line_daily2)
+    print("Dataframe 2",df2)
+    #print("Line daily",line_daily2)
     return line_daily1,line_daily2
 
-def get_company2_line_chart():
-    df=pd.read_csv('C:\\Users\\Bhushan\\OneDrive\\Documents\\Tweetify-1-master\\backend\\django_app\\prediction\\company2.csv')
-    print(df.head())
-    new_df= (pd.get_dummies(df,columns=["label"]))
-    new_df= new_df.groupby(['date'],as_index=False).sum()
-    new_df['date']=new_df['date'].astype(str)
-    line_c2= (new_df.set_index('date').T.to_dict('list'))
-    return line_c2
+
 
 def get_company_keyword(search,keywords):
     return get_keyword_chart(search,keywords)
