@@ -46,12 +46,12 @@ render (){
 <Container fluid className="bgdark">
   
 <Row>
-                    <Col xs={4} sm={3} md={3} id="sidebar-wrapper" >      
+                    <Col xs={5} sm={4} md={3} id="sidebar-wrapper" >      
                       <SideBar parentCallback = {this.handleCallback} />
                       
                     </Col>
                    
-                    <Col  xs={8} sm={9} md={9}>
+                    <Col  xs={7} sm={8} md={9}>
                   
                        <Row    >
                     
@@ -62,21 +62,8 @@ render (){
                        <Row >
                         <Col xs={12} sm={12} md={3}   style={{paddingLeft:0}}><TweetsCard tweets={this.state._count.tweets}/></Col>
                       
-                        <Col  bsPrefix = "col cloud" xs={12} sm={12} md={9} style={{height: '10%',marginTop:50}} ><PosCloud freq={this.state._count.freq_array} /></Col>
-                        {/* <Col  xs={12} sm={12} md={2} style={{height: '10%',width:'10%',marginTop:50}}  >
-                        <div style={{ background:"rgb(25, 32, 37)", height:'330px'}}>
-                          
-                          <Row>
-                          <Button variant="primary" size="md" style={{marginRight:10,marginLeft:20,marginTop:25,background:'#3342ff'}}>Contact us</Button>
-                          </Row>
-                          <Row>
-                          <Button variant="primary" size="md" style={{marginRight:10,marginLeft:20,marginTop:20,background:'#3342ff'}}>About Us</Button>
-                          </Row>
-                          <Row>
-                          <Button variant="primary" size="md" style={{marginRight:10,marginLeft:20,marginTop:20,background:'#3342ff'}}>Report Bug</Button>
-                          </Row>
-                          </div>
-                        </Col> */}
+                        <Col  bsPrefix = "col cloud" xs={12} sm={12} md={9} style={{height: '10%',marginTop:50,paddingBottom:5}} ><PosCloud freq={this.state._count.freq_array} /></Col>
+                        
                        
                        
                        </Row>

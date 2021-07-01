@@ -57,6 +57,7 @@ googleAuth(obj){
     }
   return (
 
+      <div className="containerbox" style={{'background-color': '#212529'}}>      
         
 <div className="form__box">
 <div className="form__container" style={{'background-color': '#212529'}}>
@@ -105,7 +106,7 @@ googleAuth(obj){
 
   </div>
 </Form>
-        </div></div>
+        </div></div></div>
     )
 }
 

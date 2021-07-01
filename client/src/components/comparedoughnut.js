@@ -1,3 +1,7 @@
+// blue -#719FB0
+// green - #346751
+// red -#F05454
+
 import React, { Component} from 'react';
 import { ResponsivePie } from '@nivo/pie'
 export default class CompareDough extends Component{
@@ -46,19 +50,19 @@ export default class CompareDough extends Component{
             "id": "negative",
             "label": "negative",
             "value":negative,
-            "color": "#6c70c2"
+            "color": "#ED8D8D"
           },
           {
             "id": "neutral",
             "label": "neutral",
-            "value": neutral,
-            "color": "#0c18f7"
+            "value":neutral,
+            "color": "#519872"
           },
           
         ]
 
           
-          const cr={'positive':'#3342ff','negative':'#6c70c2','neutral':'#0c18f7'}
+        const cr={'positive':'#519872','negative':'#ED8D8D','neutral':'#3342ff'}
           const getColor = s => cr[s.id]
           return (
             
@@ -101,8 +105,8 @@ export default class CompareDough extends Component{
           type: 'linearGradient',
 
           colors: [
-              { offset: 0, color: '#3342ff' },
-              { offset: 150, color: '#659aeb' },
+              { offset: 0, color: '#8FD6E1' },
+              { offset: 150, color: '#719FB0' },
 
               
 
@@ -116,7 +120,7 @@ export default class CompareDough extends Component{
           type: 'linearGradient',
 
           colors: [
-              { offset: 0, color: '#f25b1f' },
+              { offset: 0, color: '#ED8D8D' },
               { offset: 150, color: '#f0b49c' },
 
               
@@ -131,8 +135,8 @@ export default class CompareDough extends Component{
         type: 'linearGradient',
 
         colors: [
-            { offset: 0, color: '#7915ed' },
-            { offset: 150, color: '#bf8cfa' },
+            { offset: 0, color: '#A4B494' },
+            { offset: 150, color: '#519872' },
 
             
 
@@ -142,11 +146,12 @@ export default class CompareDough extends Component{
     
     ]}
 
+
       fill={[
 
-          { match: {id:'positive'}, id: 'gradientC' },
+          { match: {id:'positive'}, id: 'gradientA' },
           { match: {id:'negative'}, id: 'gradientB' },
-          { match: {id:'neutral'}, id: 'gradientA' },
+          { match: {id:'neutral'}, id: 'gradientC' },
 
       ]}
         legends={[

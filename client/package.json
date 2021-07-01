@@ -17,6 +17,7 @@
     "mdbreact": "^5.0.2",
     "nivo": "^0.31.0",
     "package.json": "^2.0.1",
+    "re-resizable": "^6.9.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-chartjs-2": "^3.0.3",

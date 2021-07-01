@@ -1,0 +1,37 @@
+.containerbox{
+    background: url('../images/login3.png') center center/cover no-repeat; 
+    
+}
+
+
+.form__box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.form__container
+{   box-sizing: border-box;
+    padding:3%;
+    display:inline-block;
+    background:rgb(25,32,37);
+    color:#fff;
+    border-radius: 2%;
+    margin:5%;
+
+}
+
+.form__message
+{
+    padding-top:1%;
+    padding-bottom: 9%;
+    color: #fff;
+    
+}
+
+.form__submit
+{
+    text-align:center;
+    margin:10%;
+}

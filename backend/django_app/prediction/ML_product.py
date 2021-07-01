@@ -126,9 +126,10 @@ def get_line_chart_daily(pro_name):
     df= (pd.get_dummies(df,columns=["labels"]))
     df= df.groupby(['Date'],as_index=False).sum()
     df['Date']=df['Date'].astype(str)
+    df=checkPresence(df)
     line_daily= (df.set_index('Date').T.to_dict('list'))
     
-    #print("Line daily",line_daily)
+    print("Line daily",line_daily)
     
     return line_daily
 
@@ -217,7 +218,7 @@ def get_company_line_chart(days,pro1,pro2):
     df1=checkPresence(df1)
     line_daily1= (df1.set_index('Date').T.to_dict('list'))
     
-    print("Dataframe 1",df1)
+    print("Line daily 1",line_daily1)
    
     df2 = extract(pro2,days-1,5,False)
     
@@ -240,7 +241,7 @@ def get_company_line_chart(days,pro1,pro2):
     df2['Date']=df2['Date'].astype(str)
     df2=checkPresence(df2)
     line_daily2= (df2.set_index('Date').T.to_dict('list'))
-    print("Dataframe 2",df2)
+    print("Line daily 2",line_daily2)
     #print("Line daily",line_daily2)
     return line_daily1,line_daily2
 

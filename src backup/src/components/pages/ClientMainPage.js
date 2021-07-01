@@ -1,0 +1,154 @@
+// import './App.css';
+import ClientSideBar from '../ClientSidebar'
+import Bars from '../stackedbar'
+import PosCloud from '../pos_cloud' 
+import Line from '../line'
+// import NeuCloud from '../neu_cloud'
+// import NegCloud from '../neg_cloud'
+import '../ClientSidebar.css'
+import { Container,Row,Col,Card } from 'react-bootstrap';
+import React, { Component} from 'react';
+import KeyDough from '../keyworddoughnut'
+
+export default class ClientMainPage extends Component{
+  
+    constructor(props){
+      super(props);
+      this.state = {
+          data: "india",
+        
+          _count:{
+            'positive':100,
+            'negative':100,
+            'neutral':100,
+            'tweets':['\nPlease wait..'],
+            'freq_array':[{"text":"Welcome ","value":10}],
+            'hashtag':{},
+            'line_daily':{},
+            'keyword':{},
+            
+          }
+      }
+      this.handleCallback=this.handleCallback.bind(this)
+  }
+
+
+handleCallback = (childData) =>{
+  this.setState({isLoading: true})
+  this.setState({_count: childData})
+   
+   
+}
+
+
+render (){
+  
+    return(
+<Container fluid className="bgdark">
+  
+<Row>
+                  <Col xs={4} sm={3} lg={3} id="sidebar-wrapper" >      
+                      <ClientSideBar parentCallback = {this.handleCallback} />
+                      
+                    </Col>
+                    <Col xs={8} sm={9} lg={9}>
+                            <Row>
+                            <Col xs={4} sm={3} lg={4} >      
+                              
+                                                      <Card
+                                      bg="success"
+                                      
+                                      text="light"
+                                      style={{ width: '18rem',marginTop:'1rem' }}
+                                      className="mb-2"
+                                    >
+                                      
+                                      <Card.Body>
+                                        <h1>{this.state._count.positive}</h1>
+                                        <Card.Text>
+                                          Positive Tweets
+                                        </Card.Text>
+                                      </Card.Body>
+                                    </Card>
+                            </Col>
+                            <Col xs={4} sm={3} lg={4} >      
+                              
+                                                      <Card
+                                      bg="primary"
+                                      
+                                      text="light"
+                                      style={{ width: '18rem',marginTop:'1rem' }}
+                                      className="mb-2"
+                                    >
+                                      
+                                      <Card.Body>
+                                      <h1>{this.state._count.neutral}</h1>
+                                        <Card.Text>
+                                          Neutral Tweets
+                                        </Card.Text>
+                                      </Card.Body>
+                                    </Card>
+                            </Col>
+                            <Col xs={4} sm={3} lg={4} >      
+                              
+                                                      <Card
+                                      bg="danger"
+                                      
+                                      text="light"
+                                      style={{ width: '18rem',marginTop:'1rem' }}
+                                      className="mb-2"
+                                    >
+                                      
+                                      <Card.Body>
+                                      <h1>{this.state._count.negative}</h1>
+                                        <Card.Text>
+                                          Negative Tweets
+                                        </Card.Text>
+                                      </Card.Body>
+                                    </Card>
+                            </Col>
+                          </Row>
+                            
+                          <Row>
+        <Col xs={12} sm={12} lg={6} style={{height:'400px'}}>Hashtag analysis
+        <Bars hashtag={this.state._count.hashtag}></Bars>
+                           
+        </Col>
+        <Col xs={12} sm={12} lg={6} style={{height:'430px',margin:'auto','overflow':'hidden'}}>Worcloud
+        <PosCloud freq={this.state._count.freq_array}></PosCloud>
+        </Col>
+        </Row>
+        
+        <Row>
+        <Col xs={4} sm={3} lg={12} style={{height:'250px',margin:'10px'}}>
+          <p>Keyword based doughnut charts/bar charts</p>
+          <Line line_daily={this.state._count.line_daily}></Line>
+        </Col>
+        
+        </Row>
+        
+        <Row>
+          
+        {  Object.entries(this.state._count.keyword).map(([key,value],i) =>
+            <Col  xs={4} sm={3} lg={5} style={{ height: '250px',width:'700px',margin:'10px'}}>{key}
+            <KeyDough key= {key} value={value}></KeyDough>
+          </Col> 
+          )}
+            
+        </Row>           
+                              
+        
+          
+        
+
+        <Row>Our analysis,dial charts</Row>
+    </Col>
+  </Row>
+</Container>
+  );
+}
+
+}
+
+
+

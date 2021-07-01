@@ -55,28 +55,28 @@ export default class Line  extends Component{
 
             {
                 "id":"negative",
-                "color": "hsl(167, 70%, 50%)",
+                "color": "#F05454",
                 "data":data_neg
 
             },
 
             {
                 "id":"neutral",
-                "color": "hsl(282, 70%, 50%)",
+                "color": "#719FB0",
                 "data":data_neu
 
             },
 
             {
                 "id":"positive",
-                "color": "hsl(344, 70%, 50%)",
+                "color": "#346751",
                 "data":data_pos
 
             }
         ]
         console.log("alldata",alldata)
             
-            const cr={'positive':'#3342ff','negative':'#6c70c2','neutral':'#0c18f7'}
+            const cr={'positive':'#519872','negative':'#ED8D8D','neutral':'#3342ff'}
             const getColor = s => cr[s.id]
             return (
                 <ResponsiveLine
@@ -84,7 +84,7 @@ export default class Line  extends Component{
                 margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
                 xScale={{ type: 'point' }}
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-                
+                colors={getColor}
                 
                 axisTop={null}
                 axisRight={null}

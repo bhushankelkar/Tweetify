@@ -1,0 +1,21 @@
+.carousel__container{
+    
+    
+    width:400px;
+    height:300px;
+    color:black;
+    background:pink;
+    margin:auto auto;
+    
+}
+
+.carousel__container img{
+    display: block;
+}
+
+.fa-user-circle{
+    background:yellow;
+}
+
+ 
+

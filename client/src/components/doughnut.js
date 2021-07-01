@@ -1,5 +1,13 @@
 import React, { Component} from 'react';
 import { ResponsivePie } from '@nivo/pie'
+const resizeStyle = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  border: "solid 1px #ddd",
+  background: "rgb(25, 32, 37)",
+  
+};
 export default class Dough extends Component{
 
   constructor(props){
@@ -38,25 +46,26 @@ export default class Dough extends Component{
             "id": "negative",
             "label": "negative",
             "value":this.state.negative,
-            "color": "#6c70c2"
+            "color": "#ED8D8D"
           },
           {
             "id": "neutral",
             "label": "neutral",
             "value": this.state.neutral,
-            "color": "#0c18f7"
+            "color": "#519872"
           },
           
         ]
 
           
-          const cr={'positive':'#3342ff','negative':'#6c70c2','neutral':'#0c18f7'}
+          const cr={'positive':'#519872','negative':'#ED8D8D','neutral':'#3342ff'}
           const getColor = s => cr[s.id]
           return (
             
    
 
 <ResponsivePie
+        style={{border: "solid 1px #ddd",}}
         data={data}
         margin={{
           top: 5,
@@ -93,8 +102,8 @@ export default class Dough extends Component{
           type: 'linearGradient',
 
           colors: [
-              { offset: 0, color: '#3342ff' },
-              { offset: 150, color: '#659aeb' },
+              { offset: 0, color: '#8FD6E1' },
+              { offset: 150, color: '#1597BB' },
 
               
 
@@ -108,7 +117,7 @@ export default class Dough extends Component{
           type: 'linearGradient',
 
           colors: [
-              { offset: 0, color: '#f25b1f' },
+              { offset: 0, color: '#ED8D8D' },
               { offset: 150, color: '#f0b49c' },
 
               
@@ -123,8 +132,8 @@ export default class Dough extends Component{
         type: 'linearGradient',
 
         colors: [
-            { offset: 0, color: '#7915ed' },
-            { offset: 150, color: '#bf8cfa' },
+            { offset: 0, color: '#A4B494' },
+            { offset: 150, color: '#519872' },
 
             
 
@@ -136,9 +145,9 @@ export default class Dough extends Component{
 
       fill={[
 
-          { match: {id:'positive'}, id: 'gradientC' },
+          { match: {id:'positive'}, id: 'gradientA' },
           { match: {id:'negative'}, id: 'gradientB' },
-          { match: {id:'neutral'}, id: 'gradientA' },
+          { match: {id:'neutral'}, id: 'gradientC' },
 
       ]}
         legends={[

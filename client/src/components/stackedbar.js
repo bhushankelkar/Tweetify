@@ -39,22 +39,23 @@ export default class MyResponsiveBarCanvas  extends Component{
         }
   
             
-            const cr={'positive':'#3342ff','negative':'#6c70c2','neutral':'#0c18f7'}
+            const cr={'pos_hash':'#519872','neg_hash':'#ED8D8D','neu_hash':'#3342ff'}
             const getColor = s => cr[s.id]
             return (
     <ResponsiveBarCanvas
         data={data}
-        keys={[ 'neg_hash','pos_hash','neu_hash'
+        keys={[ 'neg_hash','neu_hash','pos_hash'
             
         ]}
+        
         indexBy="hasht"
         margin={{ top: 50, bottom: 50, left: 130,right:5 }}
         padding={0.15}
         layout="horizontal"
         valueScale={{ type: 'linear' }}
         indexScale={{ type: 'band' ,rounf:'true'}}
-        colors={{ scheme: 'nivo' }}
-        
+        // colors={{ scheme: 'nivo' }}
+        colors={getColor}
         
         borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.9 ] ] }}
         axisTop={null}

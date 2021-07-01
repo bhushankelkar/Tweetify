@@ -8,10 +8,10 @@ export default class ClientSideBar extends Component{
   super(props)
   
   this.state={
-    data:"india",
+    data:"samsung",
     loading:true,
-    pro2_name:"redmi battery",
-    days : 1,
+    pro2_name:"redmi",
+    days : 5,
     date : new Date(),
     counts:{  'positive':10,
     'negative':10,
@@ -58,10 +58,10 @@ async onTrigger(event) {
   this.setState({loading:true})
   event.preventDefault();
   var keywords = selected.join(' ')
-  this.state.data=window.location.search.split('name=')[1] + " " +keywords
-   var entered_pro = this.state.pro2_name + " " +keywords
+  this.state.data=window.location.search.split('name=')[1] 
+   var entered_pro = this.state.pro2_name 
     console.log("Entered pro",entered_pro)
-    await axios.get('http://localhost:8000/predictcompare/',{params:{text:this.state.data,text1:entered_pro,days:this.state.days}}).then((response) => {
+    await axios.get('http://localhost:8000/predictcompare/',{params:{text:this.state.data,text1:entered_pro,days:this.state.days,keywords:keywords}}).then((response) => {
     this.setState({counts:response.data})
     console.log("counts",this.state.counts)    
     this.props.parentCallback(this.state.counts);
@@ -97,7 +97,7 @@ productsub(e){
 componentDidMount(){
   
   this.setState({loading:true})
-  axios.get('http://localhost:8000/predictcompare/',{params:{text:this.state.data,text1:this.state.pro2_name,days:this.state.days}}).then((response) => {
+  axios.get('http://localhost:8000/predictcompare/',{params:{text:this.state.data,text1:this.state.pro2_name,days:this.state.days,keywords:"battery"}}).then((response) => {
   this.setState({counts:response.data})
   // console.log(this.state.counts.hashtag);
   this.props.parentCallback(this.state.counts);
@@ -158,7 +158,7 @@ componentDidMount(){
 
   <Form.Group controlId="formKeyword" className="forms">
     <Form.Label></Form.Label>
-    <Form.Control as="select" value="date" placeholder="Choose date" onChange={this.dateSelect}>
+    <select placeholder="Choose date" onChange={this.dateSelect}>
       <option>Choose date..</option>
       <option>{getDay(1)}</option>
       <option>{getDay(2)}</option>
@@ -168,7 +168,7 @@ componentDidMount(){
       <option>{getDay(6)}</option>
       <option>{getDay(7)}</option>
       
-    </Form.Control>
+    </select>
     <Form.Text className="text-muted">
       We'll generate a detailed report of tweets containing the product
     </Form.Text>

@@ -72,28 +72,17 @@ color:white;
 
 .formbutton
 {
-    margin-right:15px;
+    margin-right:1px;
+    text-align: center;
     
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 778px) {
 
     .formbutton
 {
-    margin:10px;
-    display:block;
-    width:80%;
-}
-
-}
-
-@media screen and (max-width: 1050px) {
-
-    .formbutton
-{
-    margin:10px;
-    display:block;
-    padding:0px;
+    padding:0;
+   
 }
 
 }

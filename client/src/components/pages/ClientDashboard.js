@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Table,Button,Modal} from 'react-bootstrap'
 import axios from "axios"
 import '../../App.css';
+import '../Login.css';
 import '../ClientDashboard.css';
 export default class ClientDashboard extends Component{
   constructor(props){
@@ -64,8 +65,9 @@ addProduct(e){
 render(){
   
   return(
-    
     <div className="dashboard__container">
+       <div className="containerbox">
+   
       <Button variant="primary" onClick={this.addProduct} size="lg" style={{position:'relative',bottom:'70'}}>
       Add Product
     </Button>
@@ -87,7 +89,7 @@ render(){
    
  
    </div>
-
+   </div>
    
     
   )

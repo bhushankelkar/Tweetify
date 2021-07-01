@@ -94,9 +94,7 @@ componentDidMount(){
   <span className="sr-only">Loading...</span>
   </Spinner> :  
   <div>
-  <Button
-  className="formbutton" variant="primary"  type = "submit" value = "Submit">Search</Button>
-  <Button  className="formbutton" variant="primary" >Detailed report</Button>
+  <Button variant="primary" type = "submit" value = "Submit">Search</Button>
   </div>
   } 
 </div>

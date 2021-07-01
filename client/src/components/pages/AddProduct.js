@@ -67,66 +67,26 @@ renderFullnames() { return this.state.data.map((name) => { return (<div>{name} <
 
 render() {  
   // return (  
-  //   <div>  
-  //     <h1> Examples of Multiple Checkbox in React </h1>  
   
-  //     <form onSubmit={this.handleSubmit}>  
-  //     <div className="forms-check">
-  //       {  
-  //         this.state.categories.map(item => (  
-  //           <li>  
-  //             <label>  
-  //               <input  
-  //                 type="checkbox"  
-  //                 value={item.id}  
-  //                 onChange={this.handleChange}  
-  //               /> {item.value}  
-  //             </label>  
-  //           </li>  
-  //         ))  
-          
-  //       } 
-  //       </div> 
-           
-  //       <br/>  
-  //       <input type="submit" value="Submit" />  
-  //     </form>  
-  //   </div>  
-  // );
 
   return(
-    <div>
-        <div className="form__box" style={{'background-color':'#212529'}}>
-
-<Jumbotron style={{'background':'rgb(25,32,37)','color':'#fff',width:'570px',height:'450px',margin:'20px'}}>
+    <div className="containerbox" style={{'background-color': '#212529'}}>
+            <div className="form__box" style={{'background-color':'#212529'}}>
+<Jumbotron style={{'background':'rgb(25,32,37)','color':'#fff',margin:'20px'}}>
 <Form>
 <Form.Group controlId="formProductName" bsPrefix="form__element" >
 <Form.Label>Product Name:</Form.Label>
 <Form.Control type="email" placeholder="Enter product name" onChange={this.handlename} />
 </Form.Group>
+<Form.Group controlId="formCompanyName" bsPrefix="form__element">
+    <Form.Label style={{'color':'white'}}>Model No:</Form.Label>
+    <Form.Control placeholder="Enter model no" />
+  </Form.Group>
+  <Form.Group controlId="formCompanyName" bsPrefix="form__element">
+    <Form.Label style={{'color':'white'}}>Version:</Form.Label>
+    <Form.Control placeholder="Enter version of the product" />
+  </Form.Group>
 
-<Form.Group controlId="formKeyword" className="forms">
-<Form.Label>Keywords:</Form.Label>
-
-
-
-
-<div className="forms-check">
-{  
-            this.state.categories.map(item => (  
-              <li>  
-                <label>  
-                  <input  
-                    type="checkbox"  
-                    value={item.id}  
-                    onChange={this.handleChange}  
-                  /> {item.value}  
-                </label>  
-              </li>  
-            ))  
-          }  
-</div>
-</Form.Group>
 <div className="form__submit">
 <Button variant="dark" type="submit" onClick={this.handleSubmit}>
 Submit

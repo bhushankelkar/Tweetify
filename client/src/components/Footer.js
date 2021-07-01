@@ -6,7 +6,11 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon, MDBInput, MDBFooter } fr
 
 const Footer = () => {
   return (
-    <MDBFooter className="page-footer font-small pt-4 mt-4 footer-color footer-position">
+    
+    <MDBFooter className="page-footer font-small  footer-color footer-position" style={{'background-color': '#212529'}}>
+      <br></br>
+      <br></br>
+      <br></br>
       <MDBContainer fluid className="text-center text-md-left">
         <MDBRow>
           <MDBCol md="6">
@@ -15,65 +19,44 @@ const Footer = () => {
    
           </MDBCol>
           <hr className="clearfix w-100 d-md-none" />
-          <MDBCol md="2">
+          <MDBCol md="3">
             <h5 className="text-uppercase mb-4 mt-3 font-weight-bold">
               Links
             </h5>
             <ul className="list-unstyled">
               <li>
-                <a href="#!">Link 1</a>
+                <a href="#!">Contact us</a>
               </li>
               <li>
-                <a href="#!">Link 2</a>
+                <a href="#!">Blog</a>
               </li>
               <li>
-                <a href="#!">Link 3</a>
+                <a href="#!">Demo</a>
               </li>
               <li>
-                <a href="#!">Link 4</a>
+                <a href="#!"></a>
               </li>
             </ul>
           </MDBCol>
           <hr className="clearfix w-100 d-md-none" />
-          <MDBCol md="2">
+          <MDBCol md="3">
             <h5 className="text-uppercase mb-4 mt-3 font-weight-bold">
               Links
             </h5>
             <ul className="list-unstyled">
               <li>
-                <a href="#!">Link 1</a>
+                <a href="#!">beproject@gmail.com</a>
               </li>
               <li>
-                <a href="#!">Link 2</a>
+                <a href="#!">7083247533</a>
               </li>
               <li>
-                <a href="#!">Link 3</a>
+                <a href="#!">@tweetify</a>
               </li>
-              <li>
-                <a href="#!">Link 4</a>
-              </li>
+              
             </ul>
           </MDBCol>
-          <hr className="clearfix w-100 d-md-none" />
-          <MDBCol md="2">
-            <h5 className="text-uppercase mb-4 mt-3 font-weight-bold">
-              Links
-            </h5>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#!">Link 1</a>
-              </li>
-              <li>
-                <a href="#!">Link 2</a>
-              </li>
-              <li>
-                <a href="#!">Link 3</a>
-              </li>
-              <li>
-                <a href="#!">Link 4</a>
-              </li>
-            </ul>
-          </MDBCol>
+          
         </MDBRow>
       </MDBContainer>
       <hr />
@@ -108,7 +91,7 @@ const Footer = () => {
       </div>
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+          &copy; {new Date().getFullYear()} Copyright: <a href="https://www.MDBootstrap.com"> Tweetify </a>
         </MDBContainer>
       </div>
     </MDBFooter>

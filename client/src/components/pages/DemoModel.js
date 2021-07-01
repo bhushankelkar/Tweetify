@@ -77,8 +77,9 @@ export default class DemoModel extends Component{
             img ='https://i.pinimg.com/236x/07/bd/5c/07bd5c46d04b78b0125c32a0428c16f0.jpg'
       }
     return(
-        <>
-        <Jumbotron style={{'background-color':'#212529','color':'#fff'}}>
+        
+        <div style={{'background-color':'#212529','padding':'5px'}}>
+        <Jumbotron style={{'background-color':'#212529',marginTop:25,'color':'#fff','width':'400px','margin-left':'auto','margin-right':'auto','margin-bottom':'0'}}>
         <Form onSubmit= {this.onTrigger}>
         
             <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -96,7 +97,7 @@ export default class DemoModel extends Component{
 
         
         </Jumbotron>
-        </>)
+        </div>)
 }
 }
 

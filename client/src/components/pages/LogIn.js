@@ -53,7 +53,7 @@ render(){
     (res)=>window.location.href ="http://localhost:3000/dashboard/?c="+this.state.id)
   }
 return (
-      <div style={{'background-color': '#212529'}}>
+      <div className="containerbox" style={{'background-color': '#212529'}}>
    
 <div className="form__box">
   <div className="form__container">
@@ -69,9 +69,6 @@ return (
 <Form.Group controlId="formBasicPassword" bsPrefix="form__element">
   <Form.Label>Password</Form.Label>
   <Form.Control type="password" placeholder="Password" onChange={this.onPassword}/>
-</Form.Group>
-<Form.Group controlId="formBasicCheckbox" bsPrefix="form__element">
-  <Form.Check type="checkbox" label="Check me out"  />
 </Form.Group>
 <div className="form__submit">
 <Button variant="dark" type="submit" onClick={this.submit}>
