@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Table,Button,Modal} from 'react-bootstrap'
 import axios from "axios"
 import '../../App.css';
-import '../Login.css';
+//import '../Login.css';
 import '../ClientDashboard.css';
 export default class ClientDashboard extends Component{
   constructor(props){
@@ -32,8 +32,12 @@ viewc(e,name){
 
 delete(e,name){
   e.preventDefault()
-  console.log("Name in delete",name)
-  axios.get("http://localhost:8000/delete",{params:{name:name,id:this.state.c}}).then((res)=>window.location.href ="http://localhost:3000/dashboard/?c="+this.state.c)
+  let isTrue = window.confirm("Are you sure you want to delete?");
+  if(isTrue){
+    console.log("Name in delete",name)
+    axios.get("http://localhost:8000/delete",{params:{name:name,id:this.state.c}}).then((res)=>window.location.href ="http://localhost:3000/dashboard/?c="+this.state.c)
+  }
+ 
 }
 
 componentDidMount(){
@@ -65,13 +69,13 @@ addProduct(e){
 render(){
   
   return(
-    <div className="dashboard__container">
-       <div className="containerbox">
    
+  
+     <div className="dashboard-container">
       <Button variant="primary" onClick={this.addProduct} size="lg" style={{position:'relative',bottom:'70'}}>
       Add Product
     </Button>
-    <Table striped bordered hover variant="dark">
+    <Table striped bordered hover variant="dark" style={{'margin-bottom':0}}>
   <thead>
     <tr>
       
@@ -88,7 +92,7 @@ render(){
 </Table>
    
  
-   </div>
+   
    </div>
    
     

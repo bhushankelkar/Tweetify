@@ -62,5 +62,40 @@ def convert(tup):
     # print(arr)
     return arr
 
+def get_frequent_hashtags(tweet,label):
+    import operator
+    # Creating an empty dictionary
+    myDict = {}
+    
+    lst = extract_hashtag(tweet)
+    # Adding list as value
+
+
+    # creating a list
+    # lst = [['Happy', 'For', 'Geeks'],[],['Happy'],['Sad','Cute'],[],['Happy','For']]
+    #print(lst)
+    for i in range(len(lst)):
+        for j in range(len(lst[i])):
+            key = lst[i][j]
+            if key not in myDict.keys():
+                myDict[key] = [0,0,0]
+
+            if label[i]==0:
+                    myDict[key][0]+=1
+            elif label[i]==1:
+                    myDict[key][1]+=1
+            else:
+                    myDict[key][2]+=1
+                    
+    pos_dict = dict(sorted(myDict.items(),key=lambda x: x[1][1],reverse=True)[:5])
+    neg_dict = dict(sorted(myDict.items(),key=lambda x: x[1][0],reverse=True)[:5])
+    neu_dict = dict(sorted(myDict.items(),key=lambda x: x[1][2],reverse=True)[:5])
+    merged = {**pos_dict,**neg_dict,**neu_dict}
+    # print(myDict)
+    # print(pos_dict)
+    # print(neg_dict)
+    # print(neu_dict)
+    # print("merged dictionary",merged)
+    return merged
 
 

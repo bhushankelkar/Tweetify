@@ -14,7 +14,7 @@ export default class SideBar extends Component{
     'negative':10,
     'neutral':10,
     'tweets':'',
-    
+    'hashtag':{},
   },
   
   } 

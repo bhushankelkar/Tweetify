@@ -197,6 +197,9 @@ def get_company_line_chart(days,pro1,pro2):
     # return line_c1
     import pandas as pd
     import dateutil
+
+    if days<1:  #handling if choose date not selected
+        days=7
     df1 = extract(pro1,days-1,5,False)
     
     df1['Tweets']=preprocess(df1['Tweets'])

@@ -53,7 +53,14 @@ async onTrigger(event) {
   var Difference_In_Time = datetoday.getTime() - (this.state.date).getTime();
  
 // To calculate the no. of days between two dates
-  this.state.days = Difference_In_Time / (1000 * 3600 * 24);
+
+  var temp = Difference_In_Time / (1000 * 3600 * 24);
+  if(temp<1){
+    this.state.days=7
+  }
+  else{
+    this.state.days=temp
+  }
   console.log("No of days",this.state.days);
   this.setState({loading:true})
   event.preventDefault();

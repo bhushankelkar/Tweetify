@@ -59,7 +59,7 @@ render (){
                                      
                                       
                                       text="light"
-                                      style={{ width: '18rem',marginTop:'1rem',background:"#346751" }}
+                                      style={{ width: '18rem',marginTop:'1rem',background:"#346751"  }}
                                       className="mb-2"
                                     >
                                       

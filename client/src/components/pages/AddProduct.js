@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import {Form,Button, Jumbotron} from 'react-bootstrap'
 import '../../App.css';
-import '../Login.css';
+import '../ClientDashboard.css';
 import axios from "axios"
 export default class AddProduct extends Component{
   constructor(props){
@@ -70,9 +70,9 @@ render() {
   
 
   return(
-    <div className="containerbox" style={{'background-color': '#212529'}}>
-            <div className="form__box" style={{'background-color':'#212529'}}>
-<Jumbotron style={{'background':'rgb(25,32,37)','color':'#fff',margin:'20px'}}>
+    <div className="dashboard-container" >
+            <div className="form__box" style={{'margin-right':30}}>
+<Jumbotron style={{'background':'rgb(25,32,37)','color':'#fff'}}>
 <Form>
 <Form.Group controlId="formProductName" bsPrefix="form__element" >
 <Form.Label>Product Name:</Form.Label>

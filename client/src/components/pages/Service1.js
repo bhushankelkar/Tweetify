@@ -1,7 +1,7 @@
 // import './App.css';
 import SideBar from '../sidebar'
 import Dough from '../doughnut'
-import Bars from '../bar'
+import Bars from '../stackedbar'
 import TweetsCard from '../tweets_card'
 import PosCloud from '../pos_cloud'
 // import NeuCloud from '../neu_cloud'
@@ -24,7 +24,7 @@ export default class App extends Component{
             'neutral':100,
             'tweets':['\nPlease wait..'],
             'freq_array':[{"text":"Welcome ","value":10}],
-            
+            'hashtag':{},
           }
       }
       this.handleCallback=this.handleCallback.bind(this)
@@ -56,7 +56,7 @@ render (){
                        <Row    >
                     
                          <Col xs={12} sm={8} md={3} style={{ height: '250px',paddingTop: 10,paddingLeft:0,paddingRight:0}}><span style={{color:'white'}}></span><Dough counts= {this.state._count} /></Col>
-                         <Col xs={12} sm={12} md={9} style={{height: '300px', paddingTop: 10,paddingLeft:10}}><span style={{color:'white'}}></span><Bars counts= {this.state._count} /></Col>
+                         <Col xs={12} sm={12} md={9} style={{height: '300px', paddingTop: 10,paddingLeft:10}}><span style={{color:'white'}}></span><Bars hashtag={this.state._count.hashtag}></Bars></Col>
                        </Row>
                        
                        <Row >

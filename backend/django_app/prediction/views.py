@@ -9,6 +9,7 @@ from prediction.apps import PredictionConfig
 from . ML_politics import pred as pred
 from . ML_politics import count as count
 from . ML_politics import frequent as frequent
+from .ML_politics import get_frequent_hashtags as hashtag
 # from . ML_politics import get_frequent_hashtags as hashtag
 
 # Create your views here.
@@ -18,14 +19,14 @@ class Tweet_List(APIView):
         print("Requested data",request.GET['text'])
         label,tweet_array=pred(request.GET['text'])
         # merged=hashtag(tweet_array,label)
+        merged=hashtag(tweet_array,label)
         tweet_array=tweet_array[0:10]
         freq_array=frequent(tweet_array[0:100])
         pos,neg,neu=count(label)
-        
         counts={
             'positive':pos,'negative':neg,'neutral':neu,'tweets':tweet_array,
             'freq_array':freq_array,
-            
+            'hashtag':merged,
             
             
             }

@@ -50,7 +50,7 @@ export default class MyResponsiveBarCanvas  extends Component{
         
         indexBy="hasht"
         margin={{ top: 50, bottom: 50, left: 130,right:5 }}
-        padding={0.15}
+        
         layout="horizontal"
         valueScale={{ type: 'linear' }}
         indexScale={{ type: 'band' ,rounf:'true'}}

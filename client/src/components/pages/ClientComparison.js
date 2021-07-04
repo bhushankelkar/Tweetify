@@ -59,15 +59,15 @@ render (){
 <Container fluid className="bgdark">
   
 <Row>
-                  <Col xs={4} sm={4} lg={2} id="sidebar-wrapper" >      
+                  <Col xs={5} sm={5} lg={2} id="sidebar-wrapper" >      
                       <CompareSidebar parentCallback = {this.handleCallback} />
                       
                     </Col>
                     
-                    <Col xs={8} sm={8} lg={10}>
+                    <Col xs={7} sm={7} lg={10}>
                     <Row>
                     
-                    <Col xs={12} sm={8} md={6} style={{ paddingTop: 10,paddingLeft:0,paddingRight:0,'text-align':'center'}}><span style={{color:'white',}}>{this.state._count.pro1}</span></Col>
+                    <Col xs={12} sm={12} md={6} style={{ paddingTop: 10,paddingLeft:0,paddingRight:0,'text-align':'center'}}><span style={{color:'white',}}>{this.state._count.pro1}</span></Col>
                     <Col xs={12} sm={12} md={6} style={{ paddingTop: 10,paddingLeft:10,paddingRight:0,'text-align':'center'}}><span style={{color:'white'}}>{this.state._count.pro2}</span></Col>
                   </Row>
 
@@ -79,7 +79,7 @@ render (){
 
                   <Row>
                     
-                    <Col xs={12} sm={8} md={6} style={{ height: '250px',paddingTop: 10,paddingLeft:0,paddingRight:0}}><span style={{color:'white'}}></span><Line line_daily= {this.state._count.company1_line} /></Col>
+                    <Col xs={12} sm={12} md={6} style={{ height: '250px',paddingTop: 10,paddingLeft:0,paddingRight:0}}><span style={{color:'white'}}></span><Line line_daily= {this.state._count.company1_line} /></Col>
                     <Col xs={12} sm={12} md={6} style={{height: '250px', paddingTop: 10,paddingLeft:10,paddingRight:0}}><span style={{color:'white'}}></span><Line line_daily= {this.state._count.company2_line} /></Col>
                   </Row>
 

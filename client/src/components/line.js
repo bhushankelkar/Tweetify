@@ -81,7 +81,8 @@ export default class Line  extends Component{
             return (
                 <ResponsiveLine
                 data={alldata}
-                margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+                margin={{ top: 50, right: 110, bottom: 80, left: 80 }}
+                padding={0.50}
                 xScale={{ type: 'point' }}
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
                 colors={getColor}
@@ -91,12 +92,12 @@ export default class Line  extends Component{
                 axisLeft={null}
                 axisBottom={{
                     orient: 'bottom',
-                    tickSize: 5,
-                    tickPadding: 5,
-                    tickRotation: 0,
-                    legend: 'transportation',
+                    tickSize:3,
+                    tickPadding: 10,
+                    tickRotation: -60,
+                  
                     legendOffset: 36,
-                    legendPosition: 'middle'
+                    legendPosition: 'top'
                 }}
               
                 enableGridY={false}
